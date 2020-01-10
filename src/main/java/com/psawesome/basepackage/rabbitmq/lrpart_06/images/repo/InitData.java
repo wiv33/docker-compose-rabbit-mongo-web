@@ -20,7 +20,7 @@ public class InitData {
             operations.dropCollection(Image.class);
 
             operations.insert(new Image("1", "docker-logo.jpeg"));
-            operations.insert(new Image("2", "l-r-Flux.png"));
+            operations.insert(new Image("2", "l-r-Flux.jpg"));
             operations.insert(new Image("3", "l-r-Mono.jpg"));
         };
     }

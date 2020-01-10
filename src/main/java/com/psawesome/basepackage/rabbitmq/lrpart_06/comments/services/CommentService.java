@@ -2,6 +2,7 @@ package com.psawesome.basepackage.rabbitmq.lrpart_06.comments.services;
 
 import com.psawesome.basepackage.rabbitmq.lrpart_06.comments.entity.Comment;
 import com.psawesome.basepackage.rabbitmq.lrpart_06.comments.repo.CommentWriterRepository;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -23,8 +24,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CommentService {
 
-    private CommentWriterRepository repository;
-
+    private final CommentWriterRepository repository;
+    private final MeterRegistry meterRegistry;
     /*
         @RabbitListener : 메시지를 사용하는 방법을 등록하는 가장 쉬운 방법.
         @QueueBinding : 큐와 익스체인지를 즉시 선언하는 방법
@@ -45,7 +46,10 @@ public class CommentService {
         repository
                 .save(newComment)
                 .log("commentService-save")
-                .subscribe();
+                .subscribe(comment -> {
+                    meterRegistry.counter("comments.consumed", "imageId", comment.getId())
+                    .increment();
+                });
     }
 
     /*

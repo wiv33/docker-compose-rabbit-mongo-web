@@ -36,6 +36,9 @@ dependencies {
     implementation 'org.synchronoss.cloud:nio-multipart-parser'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//    implementation('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+//    implementation('org.springframework.cloud:spring-cloud-stream-reactive')
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'

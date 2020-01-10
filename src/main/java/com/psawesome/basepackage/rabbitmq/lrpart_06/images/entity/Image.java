@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * DATE: 2020-01-02 목요일 21:58
  */
 @Data
-@RequiredArgsConstructor
 @Document
 public class Image {
 
