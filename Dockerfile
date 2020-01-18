@@ -4,4 +4,4 @@ MAINTAINER PS
 
 ADD build/libs/*.jar app.jar
 
-ENTRYPOINT ["java", "-jar", "--spring.profiles.active=prod"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]

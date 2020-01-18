@@ -1,4 +1,4 @@
-version: 3.0
+version: "3.0"
 
 services:
   web:
@@ -9,7 +9,6 @@ services:
 
     depends_on:
       - mongo_user
-      - rabbit_user
       - rabbit_management_user
 
   mongo_user:
@@ -18,14 +17,9 @@ services:
     ports:
     - 27017:27017
 
-  rabbit_user:
-    image: rabbitmq
-    hostname: my-rabbit
-    ports:
-    - 5672:5672
-
   rabbit_management_user:
     image: rabbitmq:3-management
     hostname: my-rabbit-management
     ports:
-    - 15672:15672
+      - 5672:5672
+      - 15672:15672
