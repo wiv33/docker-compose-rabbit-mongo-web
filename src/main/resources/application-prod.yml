@@ -4,4 +4,8 @@ spring:
       host: mongo_user
       port: 27017
       database: webflux_mongo_demo
+  rabbitmq:
+    listener:
+      simple:
+        missing-queues-fatal: false
 #      uri: mongodb://mongo_user:27017/webflux_mongo_demo
